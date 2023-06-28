@@ -1,0 +1,12 @@
+<h2>Expense Registration</h2>
+<form (ngSubmit)="registerExpense()">
+  <div>
+    <label for="description">Description:</label>
+    <input type="text" id="description" [(ngModel)]="expenseDescription" name="description" required>
+  </div>
+  <div>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" [(ngModel)]="expenseAmount" name="amount" required>
+  </div>
+  <button type="submit">Register Expense</button>
+</form>
