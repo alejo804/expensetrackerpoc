@@ -1,0 +1,19 @@
+﻿@page
+@model RegisterExpenseModel
+@{
+    ViewData["Title"] = "Register Expense";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div>
+        <label asp-for="Expense.Description"></label>
+        <input asp-for="Expense.Description" />
+    </div>
+    <div>
+        <label asp-for="Expense.Amount"></label>
+        <input asp-for="Expense.Amount" type="number" step="0.01" />
+    </div>
+    <button type="submit">Submit</button>
+</form>

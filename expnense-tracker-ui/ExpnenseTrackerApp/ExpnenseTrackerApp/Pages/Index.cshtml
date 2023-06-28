@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<p><a asp-page="/RegisterExpense">Register Expense</a></p>
+<script src="lib/signalr/dist/browser/signalr.js"></script>
+<script>
+
+    
+
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl('https://signalrhubdr.service.signalr.net', {
+            skipNegotiation: true,
+            transport: signalR.HttpTransportType.WebSockets
+            //withCredentials: true
+            //accessTokenFactory: () => '<access-token>', // Provide the access token if required by your SignalR hub
+        })
+        .build();
+
+    connection.on('ExpenseRegistered', (message) => {
+        // Handle the received message
+        // Handle the received message
+        console.log('Received new message:', message);
+
+        // Update the UI - append the message to the container
+        const messageContainer = document.getElementById('messageContainer');
+        const newMessageElement = document.createElement('p');
+        newMessageElement.textContent = message;
+        messageContainer.appendChild(newMessageElement);
+    });
+
+    connection.start()
+        .then(() => {
+            // Connection established
+            console.log('SignalR connection established');
+        })
+        .catch((error) => {
+            // Error occurred while connecting
+            console.error('Error connecting to SignalR:', error);
+        });
+
+
+
+
+</script>
+
+<div id="messageContainer"></div>

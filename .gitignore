@@ -1,0 +1,8 @@
+expense-tracker-api/.vs/
+expense-tracker-api/.vscode/
+expense-tracker-api/bin/
+expense-tracker-api/obj/
+expnense-tracker-ui/ExpnenseTrackerApp/.vs/
+expnense-tracker-ui/ExpnenseTrackerApp/ExpnenseTrackerApp/bin/
+expnense-tracker-ui/ExpnenseTrackerApp/ExpnenseTrackerApp/obj/
+expnense-tracker-ui/ExpnenseTrackerApp/node_modules/
