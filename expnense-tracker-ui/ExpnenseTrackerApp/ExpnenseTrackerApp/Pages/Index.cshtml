@@ -18,12 +18,7 @@
     
 
     const connection = new signalR.HubConnectionBuilder()
-        .withUrl('https://signalrhubdr.service.signalr.net', {
-            skipNegotiation: true,
-            transport: signalR.HttpTransportType.WebSockets
-            //withCredentials: true
-            //accessTokenFactory: () => '<access-token>', // Provide the access token if required by your SignalR hub
-        })
+        .withUrl('/Expense')
         .build();
 
     connection.on('ExpenseRegistered', (message) => {

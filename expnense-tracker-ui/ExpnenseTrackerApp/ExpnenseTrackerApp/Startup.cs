@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ExpnenseTrackerApp.SignalR;
 
 namespace ExpnenseTrackerApp
 {
@@ -25,6 +26,7 @@ namespace ExpnenseTrackerApp
         {
             services.AddCors();
             services.AddRazorPages();
+            services.AddSignalR().AddAzureSignalR(Configuration["SignalR:ConnectionString"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,9 +58,11 @@ namespace ExpnenseTrackerApp
                     .AllowAnyHeader();
             });
 
+            // Azure SignalR service
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ExpenseHub>("/Expense");
             });
         }
     }
